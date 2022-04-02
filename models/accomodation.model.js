@@ -32,6 +32,15 @@ const accomodationSchema = new Schema({
   },
   contact: {
     type: String,
+  },
+  location: {
+    type: String,
+  },
+  state: {
+    type: String,
+  },
+  country: {
+    type: String,
   }
 });
 
