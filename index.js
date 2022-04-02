@@ -32,7 +32,7 @@ connection.once("open", () => {
 });
 
 const bookingRouter = require("./routes/bookings");
-const searchRouter = require("./routes/search");
+// const searchRouter = require("./routes/search");
 
 // Bookings API
 app.use("/bookings", bookingRouter);
