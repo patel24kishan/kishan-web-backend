@@ -3,6 +3,8 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const bodyParser=require("body-parser");
+
 
 // Written by - Het Shah - B00886897 - het.shah@dal.ca
 
@@ -31,13 +33,13 @@ connection.once("open", () => {
 });
 
 const bookingRouter = require("./routes/bookings");
-// const searchRouter = require("./routes/search");
+const searchRouter = require("./routes/search");
 
 // Bookings API
 app.use("/bookings", bookingRouter);
 
 // Search API
-// app.use("/accomodations",searchRouter);
+app.use("/search",searchRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on the PORT ${PORT}`);
