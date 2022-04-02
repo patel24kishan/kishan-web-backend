@@ -12,25 +12,25 @@ const accomodationSchema = new Schema({
   title: {
     type: String,
   },
-  description: {
+   owner: {
     type: String,
   },
   features: {
     type: String,
   },
-  owner: {
+  description: {
     type: String,
   },
   imgUrl: {
     type: String,
   },
+   type: {
+    type: String,
+  },
+   duration: {
+    type: String,
+  },
   contact: {
-    type: String,
-  },
-  type: {
-    type: String,
-  },
-  duration: {
     type: String,
   }
 });
