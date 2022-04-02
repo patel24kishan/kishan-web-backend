@@ -32,13 +32,13 @@ connection.once("open", () => {
 });
 
 const bookingRouter = require("./routes/bookings");
-// const searchRouter = require("./routes/search");
+const searchRouter = require("./routes/search");
 
 // Bookings API
 app.use("/bookings", bookingRouter);
 
 // Search API
-// app.use("/search",searchRouter);
+app.use("/search",searchRouter);
 
 app.listen(PORT, () => {
   console.log(`Server running on the PORT ${PORT}`);
