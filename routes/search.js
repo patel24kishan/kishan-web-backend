@@ -16,9 +16,10 @@ let Accomodation = require("../models/accomodation.model");
 
     router.route("/simplesearch/:location").get(async(req, res) => {
     console.log("simplesearch with location")
-     const usrLocation=req.params.location;
+     const usrLocation=req.params.location.toLowerCase();
+
     try{
-            const accomodationList =  await Accomodation.find({location:usrLocation})
+            const accomodationList =  await Accomodation.find({$or:[{location:usrLocation},{state:usrLocation},{country:usrLocation}]})
             return res.status(200).json({success:"true",message:"Users Retrieved",data:accomodationList});
         }catch(err){
             console.log("")
