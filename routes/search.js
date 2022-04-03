@@ -7,7 +7,7 @@ let Accomodation = require("../models/accomodation.model");
     console.log("simpleSearch");
     try{
             const accomodationList =  await Accomodation.find()
-            return res.status(200).json({success:"true",message:"Users Retrieved",data:accomodationList});
+            return res.status(200).json(accomodationList);
 
         }catch(err){
             return res.status(500).json({success:"false",message:"Users Not Retrieved"});
@@ -15,7 +15,20 @@ let Accomodation = require("../models/accomodation.model");
     });
 
     router.route("/simplesearch/:location").get(async(req, res) => {
-    console.log("simplesearch with location")
+    console.log("simplesearch with location: "+req.params.location)
+     const usrLocation=req.params.location.toLowerCase();
+
+    try{
+            const accomodationList =  await Accomodation.find({$or:[{location:usrLocation},{state:usrLocation},{country:usrLocation}]})
+            return res.status(200).json(accomodationList);
+        }catch(err){
+            console.log(err)
+            return res.status(500).json({success:"false",message:"Users Not Retrieved"});
+        }
+    });
+
+     router.route("/customsearch/:location").get(async(req, res) => {
+    console.log("customsearch with all parameter")
      const usrLocation=req.params.location.toLowerCase();
 
     try{
