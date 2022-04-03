@@ -22,7 +22,7 @@ let Accomodation = require("../models/accomodation.model");
             const accomodationList =  await Accomodation.find({$or:[{location:usrLocation},{state:usrLocation},{country:usrLocation}]})
             return res.status(200).json({success:"true",message:"Users Retrieved",data:accomodationList});
         }catch(err){
-            console.log("")
+            console.log(err)
             return res.status(500).json({success:"false",message:"Users Not Retrieved"});
         }
     });
